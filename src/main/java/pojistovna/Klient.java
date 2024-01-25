@@ -19,7 +19,7 @@ public class Klient {
     /**
      * Telefonní kontakt na klienta
      */
-    private int telefon;
+    private String telefon;
 
     /**
      * Druh uzavřené pojistky
@@ -33,7 +33,7 @@ public class Klient {
      * @param rodneCislo - rodné číslo klienta
      * @param druhPojistky - druh pojistky, kterou má klient sjednanou
      */
-    public Klient (String jmeno, String prijmeni, String rodneCislo, int telefon, String druhPojistky) {
+    public Klient (String jmeno, String prijmeni, String rodneCislo, String telefon, String druhPojistky) {
         this.jmeno = jmeno;
         this.prijmeni = prijmeni;
         this.rodneCislo = rodneCislo;
@@ -69,7 +69,7 @@ public class Klient {
      * Vrátí telefon klienta
      * @return telefon číslo
      */
-    public int getTelefon() {return telefon;}
+    public String getTelefon() {return telefon;}
 
     /**
      * Vrátí informaci o tom, jakou má klient sjednanou pojistku

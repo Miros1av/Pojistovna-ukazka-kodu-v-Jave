@@ -10,11 +10,11 @@ public class DatabazeKlientu {
     /**
      * Fiktivní databáze klientů
      */
-    Klient Pepa = new Klient("Josef", "NOVÁK", "830516/1517", 777365458, "Životní pojistka");
-    Klient Lada = new Klient("Lada", "KRÁLOVÁ", "815530/2524", 724584854, "Životní pojistka");
-    Klient Tonda = new Klient("Antonín", "SLAVÍČEK", "811116/6811", 733325842,"Pojištění auta");
-    Klient Honza = new Klient("Jan", "PECKA", "750215/2526", 608354558,"Pojištění auta");
-    Klient Jan = new Klient("Jan", "FOUSEK", "780514/1419", 545325845,"Pojištění nemovitosti");
+    Klient Pepa = new Klient("Josef", "NOVÁK", "830516/1517", "+420 777 365 458", "Životní pojistka");
+    Klient Lada = new Klient("Lada", "KRÁLOVÁ", "815530/2524", "724 58 48 54", "Životní pojistka");
+    Klient Tonda = new Klient("Antonín", "SLAVÍČEK", "811116/6811", "+420 733 32 58 42","Pojištění auta");
+    Klient Honza = new Klient("Jan", "PECKA", "750215/2526", "608 354 558","Pojištění auta");
+    Klient Jan = new Klient("Jan", "FOUSEK", "780514/1419", "545 325 845","Pojištění nemovitosti");
 
     public DatabazeKlientu() {
         seznamKlientu = new ArrayList<>();
@@ -31,7 +31,7 @@ public class DatabazeKlientu {
     void vypisVsechnyKlienty() {
         if (!(seznamKlientu.isEmpty())) {
             for (int i = 0; i < seznamKlientu.size(); i++) {
-                System.out.println("Klient " + "[ " + (i + 1) + " ]  " + seznamKlientu.get(i).getJmeno() + " " + seznamKlientu.get(i).getPrijmeni().toUpperCase() + " - " + seznamKlientu.get(i).getRodneCislo() + " - " + seznamKlientu.get(i).getTelefon() + " - " + seznamKlientu.get(i).getDruhPojistky());
+                System.out.println("Klient " + "[ " + (i + 1) + " ]  " + "Jméno: " + seznamKlientu.get(i).getJmeno() + " " + seznamKlientu.get(i).getPrijmeni().toUpperCase() + " - Rodné číslo: " + seznamKlientu.get(i).getRodneCislo() + " - Telefonní číslo: " + seznamKlientu.get(i).getTelefon() + " - Druh pojistky: " + seznamKlientu.get(i).getDruhPojistky());
                 //+1 je drobná korekce, aby klienti byli číslováni od jedné a ne od nuly
             }
         }
@@ -66,8 +66,8 @@ public class DatabazeKlientu {
         String prijmeni = scanner.nextLine().trim().toUpperCase();
         System.out.println("Zadejte rodné číslo celé i s lomítkem:");
         String rodneCislo = scanner.nextLine().trim();
-        System.out.println("Zadejte telefonní číslo bez předvolby a mezer:");
-        int telefon = Integer.parseInt(scanner.nextLine().trim());
+        System.out.println("Zadejte telefonní číslo:");
+        String telefon = scanner.nextLine().trim();
         System.out.println("Zadejte druh pojistky:");
         String druhPojistky = scanner.nextLine().trim();
 
