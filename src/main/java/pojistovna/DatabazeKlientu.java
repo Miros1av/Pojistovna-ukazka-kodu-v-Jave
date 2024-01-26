@@ -10,11 +10,11 @@ public class DatabazeKlientu {
     /**
      * Fiktivní databáze klientů
      */
-    Klient Pepa = new Klient("Josef", "NOVÁK", "830516/1517", "+420 777 365 458", "Životní pojistka");
-    Klient Lada = new Klient("Lada", "KRÁLOVÁ", "815530/2524", "724 58 48 54", "Životní pojistka");
-    Klient Tonda = new Klient("Antonín", "SLAVÍČEK", "811116/6811", "+420 733 32 58 42","Pojištění auta");
-    Klient Honza = new Klient("Jan", "PECKA", "750215/2526", "608 354 558","Pojištění auta");
-    Klient Jan = new Klient("Jan", "FOUSEK", "780514/1419", "545 325 845","Pojištění nemovitosti");
+    Klient Pepa = new Klient("Josef", "NOVÁK", "830516/1517", 41, "+420 777 365 458", "Životní pojistka");
+    Klient Lada = new Klient("Lada", "KRÁLOVÁ", "815530/2524", 43, "724 58 48 54", "Životní pojistka");
+    Klient Tonda = new Klient("Antonín", "SLAVÍČEK", "811116/6811", 43, "+420 733 32 58 42","Pojištění auta");
+    Klient Honza = new Klient("Jan", "PECKA", "750215/2526", 49, "608 354 558","Pojištění auta");
+    Klient Jan = new Klient("Jan", "FOUSEK", "780514/1419", 46, "545 325 845","Pojištění nemovitosti");
 
     public DatabazeKlientu() {
         seznamKlientu = new ArrayList<>();
@@ -31,7 +31,7 @@ public class DatabazeKlientu {
     void vypisVsechnyKlienty() {
         if (!(seznamKlientu.isEmpty())) {
             for (int i = 0; i < seznamKlientu.size(); i++) {
-                System.out.println("Klient " + "[ " + (i + 1) + " ]  " + "Jméno: " + seznamKlientu.get(i).getJmeno() + " " + seznamKlientu.get(i).getPrijmeni().toUpperCase() + " - Rodné číslo: " + seznamKlientu.get(i).getRodneCislo() + " - Telefonní číslo: " + seznamKlientu.get(i).getTelefon() + " - Druh pojistky: " + seznamKlientu.get(i).getDruhPojistky());
+                System.out.println("Klient " + "[ " + (i + 1) + " ]  " + "Jméno: " + seznamKlientu.get(i).getJmeno() + " " + seznamKlientu.get(i).getPrijmeni().toUpperCase() + " - Rodné číslo: " + seznamKlientu.get(i).getRodneCislo() + " - Věk: " + seznamKlientu.get(i).getVek() +" - Telefonní číslo: " + seznamKlientu.get(i).getTelefon() + " - Druh pojistky: " + seznamKlientu.get(i).getDruhPojistky());
                 //+1 je drobná korekce, aby klienti byli číslováni od jedné a ne od nuly
             }
         }
@@ -60,22 +60,35 @@ public class DatabazeKlientu {
      * Vloží nového klienta
      */
     void pridejKlienta() {
-        System.out.println("Zadejte jméno:");
-        String jmeno = scanner.nextLine().trim();
-        System.out.println("Zadejte příjmení:");
-        String prijmeni = scanner.nextLine().trim().toUpperCase();
-        System.out.println("Zadejte rodné číslo celé i s lomítkem:");
-        String rodneCislo = scanner.nextLine().trim();
-        System.out.println("Zadejte telefonní číslo:");
-        String telefon = scanner.nextLine().trim();
-        System.out.println("Zadejte druh pojistky:");
-        String druhPojistky = scanner.nextLine().trim();
+        boolean jeSpravne = false; //Kontolní boolean, který slouží k potvrzení zadání správného vstupu,
 
-        Klient klient = new Klient(jmeno, prijmeni, rodneCislo, telefon, druhPojistky);
-        seznamKlientu.add(klient);
+        while (!jeSpravne) {
+            try {
+                System.out.println("Zadejte jméno:");
+                String jmeno = scanner.nextLine().trim();
+                System.out.println("Zadejte příjmení:");
+                String prijmeni = scanner.nextLine().trim().toUpperCase();
+                System.out.println("Zadejte rodné číslo celé i s lomítkem:");
+                String rodneCislo = scanner.nextLine().trim();
+                System.out.println("Zadejte věk:");
+                int vek = Integer.parseInt (scanner.nextLine().trim());
+                System.out.println("Zadejte telefonní číslo:");
+                String telefon = scanner.nextLine().trim();
+                System.out.println("Zadejte druh pojistky:");
+                String druhPojistky = scanner.nextLine().trim();
 
-        System.out.println("Záznam byl vytvořen");
-        System.out.println("------------------------------------------");
+                Klient klient = new Klient(jmeno, prijmeni, rodneCislo, vek, telefon, druhPojistky);
+                seznamKlientu.add(klient);
+                System.out.println("Záznam byl vytvořen");
+                System.out.println("------------------------------------------");
+                jeSpravne = true; // Nastavení booleanu jeSpravne na true, které ukončí cyklus while
+
+            } catch (Exception e) {
+                System.out.println("Údaje nebyly zadány správně, prosím začněte znovu.");
+                System.out.println("------------------------------------------");
+                jeSpravne = true;
+            }
+        }
     }
 
     /**
