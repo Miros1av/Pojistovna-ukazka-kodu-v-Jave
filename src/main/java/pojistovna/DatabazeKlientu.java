@@ -60,35 +60,36 @@ public class DatabazeKlientu {
      * Vloží nového klienta
      */
     void pridejKlienta() {
+
+        System.out.println("Zadejte jméno:");
+        String jmeno = scanner.nextLine().trim();
+        System.out.println("Zadejte příjmení:");
+        String prijmeni = scanner.nextLine().trim().toUpperCase();
+        System.out.println("Zadejte rodné číslo celé i s lomítkem:");
+        String rodneCislo = scanner.nextLine().trim();
+        int vek = 0;
         boolean jeSpravne = false; //Kontolní boolean, který slouží k potvrzení zadání správného vstupu,
 
         while (!jeSpravne) {
             try {
-                System.out.println("Zadejte jméno:");
-                String jmeno = scanner.nextLine().trim();
-                System.out.println("Zadejte příjmení:");
-                String prijmeni = scanner.nextLine().trim().toUpperCase();
-                System.out.println("Zadejte rodné číslo celé i s lomítkem:");
-                String rodneCislo = scanner.nextLine().trim();
                 System.out.println("Zadejte věk:");
-                int vek = Integer.parseInt (scanner.nextLine().trim());
-                System.out.println("Zadejte telefonní číslo:");
-                String telefon = scanner.nextLine().trim();
-                System.out.println("Zadejte druh pojistky:");
-                String druhPojistky = scanner.nextLine().trim();
-
-                Klient klient = new Klient(jmeno, prijmeni, rodneCislo, vek, telefon, druhPojistky);
-                seznamKlientu.add(klient);
-                System.out.println("Záznam byl vytvořen");
-                System.out.println("------------------------------------------");
+                vek = Integer.parseInt (scanner.nextLine().trim());
                 jeSpravne = true; // Nastavení booleanu jeSpravne na true, které ukončí cyklus while
-
             } catch (Exception e) {
-                System.out.println("Údaje nebyly zadány správně, prosím začněte znovu.");
+                System.out.println("Věk nebyl správně zadán, prosím zadejte číslo znovu.");
                 System.out.println("------------------------------------------");
-                jeSpravne = true;
             }
         }
+
+        System.out.println("Zadejte telefonní číslo:");
+        String telefon = scanner.nextLine().trim();
+        System.out.println("Zadejte druh pojistky:");
+        String druhPojistky = scanner.nextLine().trim();
+
+        Klient klient = new Klient(jmeno, prijmeni, rodneCislo, vek, telefon, druhPojistky);
+        seznamKlientu.add(klient);
+        System.out.println("Záznam byl vytvořen");
+        System.out.println("------------------------------------------");
     }
 
     /**
