@@ -48,10 +48,17 @@ public class DatabazeKlientu {
         System.out.println("Zadejte příjmení včetně háčků a čárek: ");
         String prijmeni = scanner.nextLine().trim().toUpperCase();
 
+        boolean klientNalezen = false;
+
         for (Klient klient : seznamKlientu) {
             if (klient.getPrijmeni().equals(prijmeni)) {
                 System.out.println(klient);
+                klientNalezen = true;
             }
+        }
+
+        if (!klientNalezen) {
+            System.out.println("Žádný klient se zadaným příjmením nebyl nalezen. ");
         }
         System.out.println("------------------------------------------");
     }
