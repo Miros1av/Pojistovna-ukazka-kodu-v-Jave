@@ -36,7 +36,8 @@ public class Klient {
      * @param jmeno - jméno klienta
      * @param prijmeni - příjmení klienta
      * @param rodneCislo - rodné číslo klienta
-     * @param vek - jak asi vybadá
+     * @param vek - věk klienta
+     * @param telefon - telefonní kontakt na klienta
      * @param druhPojistky - druh pojistky, kterou má klient sjednanou
      */
     public Klient (String jmeno, String prijmeni, String rodneCislo, int vek, String telefon, String druhPojistky) {
@@ -94,7 +95,7 @@ public class Klient {
 
     /**
      * Vypíše klienta
-     * @return klient - Jméno, Příjmení, rodné číslo, druh pojistky
+     * @return klient - Jméno, Příjmení, rodné číslo, věk, telefon, druh pojistky
      */
     @Override
     public String toString() {

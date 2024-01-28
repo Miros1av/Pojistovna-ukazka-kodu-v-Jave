@@ -57,7 +57,7 @@ public class DatabazeKlientu {
             }
         }
 
-        if (!klientNalezen) {
+        if (klientNalezen == false) {
             System.out.println("Žádný klient se zadaným příjmením nebyl nalezen. ");
         }
         System.out.println("------------------------------------------");
